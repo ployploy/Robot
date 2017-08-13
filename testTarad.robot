@@ -19,19 +19,19 @@ ${FEE}            50.00
 
 
 *** Test Cases ***
-# Buy product with non member success
-#     Open product details
-#     Add to cart
-#     Checkout 
-#     Guest login
-#     Show payment page
+Buy product with non member success
+    Open product details
+    Add to cart
+    Checkout 
+    Guest login
+    Show payment page
  
-# Buy product with member success
-#     Open product details
-#     Add to cart
-#     Checkout 
-#     Login by member
-#     Show payment page
+Buy product with member success
+    Open product details
+    Add to cart
+    Checkout 
+    Login by member
+    Show payment page
 
 
 Buy more with non member success
@@ -44,29 +44,15 @@ Buy more with non member success
     Guest login
     Show payment page
 
-# Buy more with member success
-#     Open product details
-#     Add to cart
-#     Buymore
-#     Select product 
-#     Add to cart
-#     Checkout
-#     Login by member
-#     Show payment page
-
-    
-
-# Buy more success
-#     Add to cart
-#     Preorder by non member
-#     Open Browser    ${SERVER}    ${BROWSER}
-#     Title Should Be    ${TITLE}
-#     Click Button    xpath=//input[@type=\"submit\" and @name=\"f_buy\"]
-#     Wait Until Element Is Visible    xpath=//a[@class=\'normal_a'\]
-#     Execute javascript    document.getElementsByClassName('left_colno-installment')[0].click()
-#     Wait Until Element Is Visible    id=btn-cont
-#     Click Element    id=btn-cont
-    # Click Element   xpath=//a[@class=\'NewProductLink'\][1]
+Buy more with member success
+    Open product details
+    Add to cart
+    Buymore
+    Select product 
+    Add to cart
+    Checkout
+    Login by member
+    Show payment page
 
 *** Keywords ***
 Open product details
@@ -78,8 +64,8 @@ Add to cart
     Wait Until Element Is Visible    xpath=//a[@class=\'normal_a'\]
     ${amount}    Get Text    xpath=//span[@class=\'black-title'\]
     ${price}    Get Text    xpath=//span[@class=\'header12_css'\]
-    Log To Console    ${price}
-
+    # Log To Console    ${price}
+git
 Checkout
     Click Element    id=btn-payment
     Wait Until Page Contains    ตะกร้าสินค้า
@@ -104,20 +90,3 @@ Buymore
 Select product
     Click Image    xpath=//img[@src=\'http://www.tarad.com/images/event_discount/tmail/281016/double2shop/double2shop_03.jpg'\]
     
-
-
-# Checkout by non member
-#     Execute javascript    document.getElementsByClassName('normal_a')[0].click()
-#     Wait Until Page Contains    ตะกร้าสินค้า
-#     Click Button    xpath=//button[@class=\'btn btn-large btn-order-nopoint'\]
-
-# Checkout by Register
-#     Execute javascript    document.getElementsByClassName('normal_a')[0].click()
-#     Wait Until Page Contains    ตะกร้าสินค้า
-#     Input Text    cart_username    ${USER NAME}
-#     Input Text    cart_password    ${PASSWORD}
-#     Click Button    xpath=//input[@class=\'btn btn-large btn-danger odp-member-login-btn'\]
-
-# Payment
-#     ${price}    Get Text    xpath=//span[@class=\'span-net-price'\]
-#     Should Be Equal    ${price}    ${TOTAL PRICE}
