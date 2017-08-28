@@ -14,8 +14,9 @@ ${BROWSER}        Chrome
 ${TITLE}          กระเป๋าสะพายหนังแท้ฝาหน้าครึ่งน้ำตาลเข้ม # 6787017
 ${USER NAME}      chonnikan.t@kkumail.com
 ${PASSWORD}       ploy1038
-${TOTAL PRICE}    930.00
+# ${TOTAL PRICE}    930.00
 ${FEE}            50.00
+${HIGH PRICE}     30,800.00
 
 
 *** Test Cases ***
@@ -25,6 +26,7 @@ Buy product with non member success
     Checkout 
     Guest login
     Show payment page
+    
  
 Buy product with member success
     Open product details
@@ -54,9 +56,22 @@ Buy more with member success
     Login by member
     Show payment page
 
+Buy product overpriced 30000 bath
+    Open product details
+    Select product over 1 piece
+    Add to cart
+    Checkout 
+    Guest login
+    Show payment page
+    Check not show payment by counter service
+
+
 *** Keywords ***
 Open product details
     Open Browser    ${SERVER}    ${BROWSER}
+
+Select product over 1 piece
+    Click Element  xpath=//select[@name="product_qty"]/option[@value=35]
 
 Add to cart
     # Title Should Be    ${TITLE}
@@ -65,7 +80,7 @@ Add to cart
     ${amount}    Get Text    xpath=//span[@class=\'black-title'\]
     ${price}    Get Text    xpath=//span[@class=\'header12_css'\]
     # Log To Console    ${price}
-git
+
 Checkout
     Click Element    id=btn-payment
     Wait Until Page Contains    ตะกร้าสินค้า
@@ -89,4 +104,15 @@ Buymore
 
 Select product
     Click Image    xpath=//img[@src=\'http://www.tarad.com/images/event_discount/tmail/281016/double2shop/double2shop_03.jpg'\]
-    
+
+Check show payment by counter service
+    ${Total price}    Get Text    xpath=//td[@class=\'price product-total-price-6787017_0'\]
+    Should Not Be Equal    ${HIGH PRICE}    ${Total price}
+    # Should Not Contains    เคาน์เตอร์เซอร์วิส   
+    Wait Until Page Contains    เคาน์เตอร์เซอร์วิส
+
+Check not show payment by counter service  
+    ${Total price}    Get Text    xpath=//td[@class=\'price product-total-price-6787017_0'\]
+    Should Be Equal    ${HIGH PRICE}    ${Total price}
+    Wait Until Page does NOT contain element    xpath=//span[@class=\'payment-txt'\]/alt[@span=เคาน์เตอร์เซอร์วิส]
+   
