@@ -6,7 +6,10 @@ Documentation     A resource file with reusable keywords and variables.
 ...               by the imported Selenium2Library.
 Library           Selenium2Library
 
-Test Teardown   Close All Browsers
+
+Suite Setup    Open Browser    ${SERVER}   Chrome
+Test Setup    Go to    ${SERVER} 
+Suite Teardown   Close All Browsers
 
 *** Variables ***
 ${SERVER}         https://www.tarad.com/product/6787017?l-id=th_pc_top_body_history_prod_01
@@ -16,52 +19,52 @@ ${USER NAME}      chonnikan.t@kkumail.com
 ${PASSWORD}       ploy1038
 # ${TOTAL PRICE}    930.00
 ${FEE}            50.00
-${HIGH PRICE}     30,800.00
+${HIGH PRICE}     34,320.00
 
 
 *** Test Cases ***
-Buy product with non member success
-    Open product details
+BuyProductWithNonMemberSuccess
+    # Open product details
     Add to cart
     Checkout 
     Guest login
     Show payment page
     
  
-Buy product with member success
-    Open product details
+BuyProductWithMemberSuccess
+    # Open product detailsro
     Add to cart
     Checkout 
-    Login by member
+    Login by member    ${USER NAME}     ${PASSWORD}
     Show payment page
 
 
-Buy more with non member success
-    Open product details
+BuyMoreWithNonMemberSuccess
+    # Open product details
     Add to cart
     Buymore
     Select product 
     Add to cart
     Checkout
-    Guest login
+    # Guest login
     Show payment page
 
-Buy more with member success
-    Open product details
+BuyMoreWithMemberSuccess
+    # Open product details
     Add to cart
     Buymore
     Select product 
     Add to cart
     Checkout
-    Login by member
+    # Login by member    ${USER NAME}     ${PASSWORD}
     Show payment page
 
-Buy product overpriced 30000 bath
-    Open product details
+BuyProductOverpriced30000Bath
+    # Open product details
     Select product over 1 piece
     Add to cart
-    Checkout 
-    Guest login
+    Payment by installment
+    # Guest login
     Show payment page
     Check not show payment by counter service
 
@@ -86,7 +89,8 @@ Checkout
     Wait Until Page Contains    ตะกร้าสินค้า
 
 Guest login
-   Click Button    xpath=//button[@class=\'btn btn-large btn-order-nopoint'\]
+    Click Button    xpath=//button[@class=\'btn btn-large btn-order-nopoint'\]
+
     
 
 Show payment page
@@ -94,13 +98,18 @@ Show payment page
     Should Be Equal    ${price}    ${Price}
 
 Login by member
+    [Arguments]    ${USER NAME}    ${PASSWORD}
     Input Text    cart_username    ${USER NAME}
-    Input Text    cart_password    ${PASSWORD}
+    Input Text     cart_password    ${PASSWORD}
     Click Button    xpath=//input[@class=\'btn btn-large btn-danger odp-member-login-btn'\]
     
 Buymore
     Wait Until Element Is Visible    id=btn-cont
     Click Element    id=btn-cont
+
+Payment by installment
+    Click Element    id=btn-installment
+    Wait Until Page Contains    ตะกร้าสินค้า
 
 Select product
     Click Image    xpath=//img[@src=\'http://www.tarad.com/images/event_discount/tmail/281016/double2shop/double2shop_03.jpg'\]
