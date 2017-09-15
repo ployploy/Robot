@@ -16,7 +16,7 @@ ${SERVER}         https://www.tarad.com/product/6787017?l-id=th_pc_top_body_hist
 ${BROWSER}        Chrome
 ${TITLE}          กระเป๋าสะพายหนังแท้ฝาหน้าครึ่งน้ำตาลเข้ม # 6787017
 ${USER NAME}      chonnikan.t@kkumail.com
-${PASSWORD}       ploy1038
+${PASSWORD}       1234
 # ${TOTAL PRICE}    930.00
 ${FEE}            50.00
 ${HIGH PRICE}     34,320.00
