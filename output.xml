@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20170929 11:32:39.362" generator="Robot 3.0.2 (Python 2.7.10 on darwin)">
+<suite source="/Users/chonnikant/Documents/gits/TaradTest/Robot/buyproduct_over30k_nonmember.robot" id="s1" name="Buyproduct Over30K Nonmember">
+<kw type="setup" name="Open Browser" library="Selenium2Library">
+<doc>Opens a new browser instance to given URL.</doc>
+<arguments>
+<arg>${SERVER}</arg>
+<arg>Chrome</arg>
+</arguments>
+<msg timestamp="20170929 11:32:39.514" level="INFO">Opening browser 'Chrome' to base url 'https://www.tarad.com/product/6787017?l-id=th_pc_top_body_history_prod_01'</msg>
+<status status="PASS" endtime="20170929 11:34:04.832" starttime="20170929 11:32:39.514"></status>
+</kw>
+<test id="s1-t1" name="Buy Product Overpriced 30000 Bath">
+<kw type="setup" name="Go To" library="Selenium2Library">
+<doc>Navigates the active browser instance to the provided URL.</doc>
+<arguments>
+<arg>${SERVER}</arg>
+</arguments>
+<msg timestamp="20170929 11:34:04.834" level="INFO">Opening url 'https://www.tarad.com/product/6787017?l-id=th_pc_top_body_history_prod_01'</msg>
+<status status="PASS" endtime="20170929 11:35:20.962" starttime="20170929 11:34:04.833"></status>
+</kw>
+<kw name="Select product over 1 piece" library="keyword">
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click element identified by `locator`.</doc>
+<arguments>
+<arg>xpath=//select[@name="product_qty"]/option[@value=35]</arg>
+</arguments>
+<msg timestamp="20170929 11:35:20.964" level="INFO">Clicking element 'xpath=//select[@name="product_qty"]/option[@value=35]'.</msg>
+<status status="PASS" endtime="20170929 11:35:21.044" starttime="20170929 11:35:20.963"></status>
+</kw>
+<status status="PASS" endtime="20170929 11:35:21.044" starttime="20170929 11:35:20.962"></status>
+</kw>
+<kw name="Add to cart" library="keyword">
+<kw name="Click Button" library="Selenium2Library">
+<doc>Clicks a button identified by `locator`.</doc>
+<arguments>
+<arg>xpath=//input[@type=\"submit\" and @name=\"f_buy\"]</arg>
+</arguments>
+<msg timestamp="20170929 11:35:21.046" level="INFO">Clicking button 'xpath=//input[@type="submit" and @name="f_buy"]'.</msg>
+<status status="PASS" endtime="20170929 11:35:21.156" starttime="20170929 11:35:21.045"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<doc>Waits until element specified with `locator` is visible.</doc>
+<arguments>
+<arg>xpath=//a[@class=\'normal_a'\]</arg>
+</arguments>
+<status status="PASS" endtime="20170929 11:35:24.876" starttime="20170929 11:35:21.156"></status>
+</kw>
+<kw name="Get Text" library="Selenium2Library">
+<doc>Returns the text value of element identified by `locator`.</doc>
+<arguments>
+<arg>xpath=//span[@class=\'black-title'\]</arg>
+</arguments>
+<assign>
+<var>${amount}</var>
+</assign>
+<msg timestamp="20170929 11:35:24.926" level="INFO">${amount} = 35 ชิ้น</msg>
+<status status="PASS" endtime="20170929 11:35:24.926" starttime="20170929 11:35:24.876"></status>
+</kw>
+<kw name="Get Text" library="Selenium2Library">
+<doc>Returns the text value of element identified by `locator`.</doc>
+<arguments>
+<arg>xpath=//span[@class=\'header12_css'\]</arg>
+</arguments>
+<assign>
+<var>${price}</var>
+</assign>
+<msg timestamp="20170929 11:35:24.977" level="INFO">${price} = 30,800.00 บาท</msg>
+<status status="PASS" endtime="20170929 11:35:24.977" starttime="20170929 11:35:24.926"></status>
+</kw>
+<status status="PASS" endtime="20170929 11:35:24.977" starttime="20170929 11:35:21.045"></status>
+</kw>
+<kw name="Payment by installment" library="keyword">
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click element identified by `locator`.</doc>
+<arguments>
+<arg>id=btn-installment</arg>
+</arguments>
+<msg timestamp="20170929 11:35:24.979" level="INFO">Clicking element 'id=btn-installment'.</msg>
+<status status="PASS" endtime="20170929 11:35:27.916" starttime="20170929 11:35:24.978"></status>
+</kw>
+<kw name="Wait Until Page Contains" library="Selenium2Library">
+<doc>Waits until `text` appears on current page.</doc>
+<arguments>
+<arg>ตะกร้าสินค้า</arg>
+</arguments>
+<status status="PASS" endtime="20170929 11:35:27.938" starttime="20170929 11:35:27.917"></status>
+</kw>
+<status status="PASS" endtime="20170929 11:35:27.938" starttime="20170929 11:35:24.978"></status>
+</kw>
+<kw name="Guest login" library="keyword">
+<kw name="Click Button" library="Selenium2Library">
+<doc>Clicks a button identified by `locator`.</doc>
+<arguments>
+<arg>xpath=//button[@class=\'btn btn-large btn-order-nopoint'\]</arg>
+</arguments>
+<msg timestamp="20170929 11:35:27.940" level="INFO">Clicking button 'xpath=//button[@class='btn btn-large btn-order-nopoint']'.</msg>
+<status status="PASS" endtime="20170929 11:35:29.222" starttime="20170929 11:35:27.939"></status>
+</kw>
+<status status="PASS" endtime="20170929 11:35:29.222" starttime="20170929 11:35:27.939"></status>
+</kw>
+<kw name="Show payment page" library="keyword">
+<kw name="Get Text" library="Selenium2Library">
+<doc>Returns the text value of element identified by `locator`.</doc>
+<arguments>
+<arg>xpath=//td[@class=\'price cart-info-shipping-cost'\]</arg>
+</arguments>
+<assign>
+<var>${Price}</var>
+</assign>
+<msg timestamp="20170929 11:35:29.276" level="INFO">${Price} = 0.00</msg>
+<status status="PASS" endtime="20170929 11:35:29.276" starttime="20170929 11:35:29.223"></status>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${price}</arg>
+<arg>${Price}</arg>
+</arguments>
+<status status="PASS" endtime="20170929 11:35:29.276" starttime="20170929 11:35:29.276"></status>
+</kw>
+<status status="PASS" endtime="20170929 11:35:29.277" starttime="20170929 11:35:29.223"></status>
+</kw>
+<kw name="Check not show payment by counter service" library="keyword">
+<kw name="Get Text" library="Selenium2Library">
+<doc>Returns the text value of element identified by `locator`.</doc>
+<arguments>
+<arg>xpath=//td[@class=\'price product-total-price-6787017_0'\]</arg>
+</arguments>
+<assign>
+<var>${Total price}</var>
+</assign>
+<msg timestamp="20170929 11:35:29.324" level="INFO">${Total price} = 30,800.00</msg>
+<status status="PASS" endtime="20170929 11:35:29.324" starttime="20170929 11:35:29.277"></status>
+</kw>
+<kw name="Wait Until Page Does Not Contain Element" library="Selenium2Library">
+<doc>Waits until element specified with `locator` disappears from current page.</doc>
+<arguments>
+<arg>xpath=//span[@class=\'payment-txt'\]/alt[@span=เคาน์เตอร์เซอร์วิส]</arg>
+</arguments>
+<status status="PASS" endtime="20170929 11:35:29.344" starttime="20170929 11:35:29.324"></status>
+</kw>
+<status status="PASS" endtime="20170929 11:35:29.344" starttime="20170929 11:35:29.277"></status>
+</kw>
+<status status="PASS" endtime="20170929 11:35:29.344" critical="yes" starttime="20170929 11:34:04.832"></status>
+</test>
+<kw type="teardown" name="Close All Browsers" library="Selenium2Library">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" endtime="20170929 11:35:29.481" starttime="20170929 11:35:29.345"></status>
+</kw>
+<status status="PASS" endtime="20170929 11:35:29.481" starttime="20170929 11:32:39.366"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="0" pass="1">Critical Tests</stat>
+<stat fail="0" pass="1">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat fail="0" id="s1" name="Buyproduct Over30K Nonmember" pass="1">Buyproduct Over30K Nonmember</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
