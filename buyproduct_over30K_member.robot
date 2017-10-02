@@ -18,7 +18,7 @@ ${PASSWORD}       ploy1038
 Buy Product Overpriced 30000 Bath
     Select product over 1 piece
     Add to cart
-    Payment by installment
+    Checkout
     Login by member    ${USER NAME}     ${PASSWORD}
     Show payment page
     Check not show payment by counter service

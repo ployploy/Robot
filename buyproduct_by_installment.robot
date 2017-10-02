@@ -13,10 +13,9 @@ ${TITLE}          กระเป๋าสะพายหนังแท้ฝ�
 ${HIGH PRICE}     34,320.00
 
 *** Test Cases ***
-Buy Product Overpriced 30000 Bath
+Buy Product By Installment
     Select product over 1 piece
     Add to cart
-    Checkout
+    Payment by installment
     Guest login
     Show payment page
-    Check not show payment by counter service
