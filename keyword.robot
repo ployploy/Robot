@@ -1,3 +1,12 @@
+*** Variables ***
+${SERVER}         https://www.tarad.com/product/6787017?l-id=th_pc_top_body_history_prod_01
+${BROWSER}        Chrome
+${TITLE}          กระเป๋าสะพายหนังแท้ฝาหน้าครึ่งน้ำตาลเข้ม # 6787017
+${USER NAME}      chonnikan.t@kkumail.com
+${PASSWORD}       ploy1038
+${HIGH PRICE}     34,320.00
+
+
 *** Keywords ***
 Open product details
     Open Browser    ${SERVER}    ${BROWSER}
