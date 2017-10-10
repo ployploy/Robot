@@ -8,8 +8,9 @@ Suite Teardown   Close All Browsers
 
 
 *** Test Cases ***
-Buy Product With Member Success
+Success, Member Buy Product 880 Baht Get 8 Reward Point
     Add to cart
     Checkout 
     Login by member    ${USER NAME}     ${PASSWORD}
     Show payment page
+    Get reward point

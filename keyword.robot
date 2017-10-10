@@ -4,6 +4,7 @@ ${BROWSER}        Chrome
 ${TITLE}          กระเป๋าสะพายหนังแท้ฝาหน้าครึ่งน้ำตาลเข้ม # 6787017
 ${USER NAME}      chonnikan.t@kkumail.com
 ${PASSWORD}       ploy1038
+${SCORE}          8
 ${HIGH PRICE}     34,320.00
 
 
@@ -20,6 +21,15 @@ Add to cart
     ${amount}    Get Text    xpath=//span[@class=\'black-title'\]
     ${price}    Get Text    xpath=//span[@class=\'header12_css'\]
     # Log To Console    ${price}
+
+Not show installment
+    Wait Until Element Is Visible    id=btn-payment
+    Wait Until Element Is Visible    id=btn-cont
+
+Show all payment
+    Wait Until Element Is Visible    id=btn-installment
+    Wait Until Element Is Visible    id=btn-payment
+    Wait Until Element Is Visible    id=btn-cont
 
 Checkout
     Click Element    id=btn-payment
@@ -58,4 +68,11 @@ Check show payment by counter service
 Check not show payment by counter service  
     ${Total price}    Get Text    xpath=//td[@class=\'price product-total-price-6787017_0'\]
     Wait Until Page does NOT contain element    xpath=//span[@class=\'payment-txt'\]/alt[@span=เคาน์เตอร์เซอร์วิส]
+
+
+Get reward point
+    ${score}    Get Text    xpath=//td[@class=\'price product-point-6787017_0'\]
+    Should Be Equal    ${SCORE}    ${score}
+
+
    

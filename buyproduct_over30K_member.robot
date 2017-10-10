@@ -11,6 +11,7 @@ Suite Teardown   Close All Browsers
 Buy Product Overpriced 30000 Bath
     Select product over 1 piece
     Add to cart
+    Show all payment
     Checkout
     Login by member    ${USER NAME}     ${PASSWORD}
     Show payment page

@@ -8,9 +8,10 @@ Suite Teardown   Close All Browsers
 
 
 *** Test Cases ***
-Buy Product With NonMember Success
+Nonmember Buy Product 2999 Baht Display Payment Without Installment 
     Add to cart
+    Not show installment
     Checkout 
     Guest login
     Show payment page
- 
+
